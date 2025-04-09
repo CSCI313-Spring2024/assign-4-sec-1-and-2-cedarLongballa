@@ -9,4 +9,12 @@ import { Contact } from '../contact';
 })
 export class ContactCardComponent {
   @Input() contacts: Contact[] = [];
+
+  editContact(){
+
+  }
+
+  deleteContact(){
+    
+  }
 }

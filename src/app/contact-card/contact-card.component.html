@@ -3,5 +3,7 @@
         <h3>{{contact.firstName}} {{contact.lastName}}</h3>
         <p>Phone number: {{contact.number}}</p>
         <p>Email: {{contact.email}}</p>
+        <button class="btn btn-primary" (click)="editContact()">Edit</button>
+        <button class="btn btn-primary" (click)="deleteContact()">Delete</button>
     </div>
 }
