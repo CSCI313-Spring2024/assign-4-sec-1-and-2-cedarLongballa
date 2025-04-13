@@ -3,4 +3,5 @@ export interface Contact {
     lastName: string;
     number: string;
     email: string;
+    id: number;
 }

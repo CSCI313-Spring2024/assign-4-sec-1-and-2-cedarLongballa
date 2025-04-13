@@ -10,11 +10,11 @@ import { Contact } from '../contact';
 export class ContactCardComponent {
   @Input() contacts: Contact[] = [];
 
-  editContact(){
+  editContact(id: number){
 
   }
 
-  deleteContact(){
+  deleteContact(id: number){
     
   }
 }

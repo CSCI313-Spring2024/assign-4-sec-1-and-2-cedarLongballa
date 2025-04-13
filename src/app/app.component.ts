@@ -13,5 +13,9 @@ import { Contact } from './contact';
 export class AppComponent {
   title = 'assignment-4';
 
-  @Input() contacts: Contact[] = [];
+  contacts: Contact[] = [];
+
+  updateContactList(updatedContacts: Contact[]){
+    this.contacts = updatedContacts;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Contact } from '../contact';
 
 @Component({
@@ -8,12 +8,18 @@ import { Contact } from '../contact';
   styleUrl: './contact-form.component.css'
 })
 export class ContactFormComponent {
-  @Output() contacts: Contact[] = [];
+  contacts: Contact[] = [];
 
-  contact: Contact = {firstName: "", lastName: "", number: "", email: ""};
+  @Output() addingContacts = new EventEmitter<Contact[]>();
 
-  addContact(firstName:string, lastName:string, number:string, email:string){
-    this.contact = {firstName, lastName, number, email};
+  runningId: number = 0;
+
+  contact: Contact = {firstName: "", lastName: "", number: "", email: "", id: this.runningId};
+
+  addContact(firstName:string, lastName:string, number:string, email:string, id:number){
+    this.contact = {firstName, lastName, number, email, id};
     this.contacts.push(this.contact);
+    this.runningId = this.runningId + 1;
+    this.addingContacts.emit(this.contacts);
   }
 }
