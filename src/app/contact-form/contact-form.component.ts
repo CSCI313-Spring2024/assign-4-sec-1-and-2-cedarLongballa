@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Contact } from '../contact';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -8,18 +9,18 @@ import { Contact } from '../contact';
   styleUrl: './contact-form.component.css'
 })
 export class ContactFormComponent {
-  contacts: Contact[] = [];
 
-  @Output() addingContacts = new EventEmitter<Contact[]>();
+  private dataService = inject(DataService);
+  private runningId = 0;
 
-  runningId: number = 0;
-
-  contact: Contact = {firstName: "", lastName: "", number: "", email: "", id: this.runningId};
-
-  addContact(firstName:string, lastName:string, number:string, email:string, id:number){
-    this.contact = {firstName, lastName, number, email, id};
-    this.contacts.push(this.contact);
-    this.runningId = this.runningId + 1;
-    this.addingContacts.emit(this.contacts);
+  addContact(firstName: string, lastName: string, number: string, email: string) {
+    const newContact: Contact = {
+      firstName,
+      lastName,
+      number,
+      email,
+      id: this.runningId++
+    };
+    this.dataService.addContact(newContact);
   }
 }

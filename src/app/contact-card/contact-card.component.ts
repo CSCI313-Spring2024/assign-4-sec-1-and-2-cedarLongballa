@@ -1,20 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Contact } from '../contact';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-contact-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './contact-card.component.html',
   styleUrl: './contact-card.component.css'
 })
 export class ContactCardComponent {
-  @Input() contacts: Contact[] = [];
 
-  editContact(id: number){
+  @Input() contacts!: Contact[];
+  @Output() deleted = new EventEmitter<number>();
 
-  }
-
-  deleteContact(id: number){
-    
+  deleteContact(id: number) {
+    this.deleted.emit(id);
   }
 }
