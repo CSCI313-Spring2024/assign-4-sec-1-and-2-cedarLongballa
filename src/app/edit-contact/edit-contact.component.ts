@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { Contact } from '../contact';
 import { DataService } from '../data.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-contact',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule],
   templateUrl: './edit-contact.component.html',
   styleUrl: './edit-contact.component.css'
 })
